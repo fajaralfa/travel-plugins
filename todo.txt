@@ -1,0 +1,22 @@
+- [x] Master "Budget Use" (Each Requester differ)
+- [x] Diagram & Form
+- [o] Validation
+- [x] Audit Trail
+- [] Send email
+- [] Plugin
+- [] Filter & UX
+
+- Needed plugin:
+	Amount validator, don't exceed current.
+	Stock decreaser, by amount submitted.
+
+- Test scenario: just run everything and hit every branch of condition you scumbag :).
+
+Questions:
+- Who is head of requester? hod?
+
+Note on best practices:
+- Best part is no part.
+- Simplify.
+- Minimize use of plugin.
+- Make plugin more flexible.

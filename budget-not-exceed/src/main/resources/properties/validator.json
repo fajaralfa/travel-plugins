@@ -1,0 +1,17 @@
+[{
+  "title": "Budget Not Exceed Validator Configuration",
+  "properties": [
+    {
+      "name": "requester-username",
+      "label": "Requester Username",
+      "type": "TextField",
+      "mandatory": "true"
+    },
+    {
+      "name": "error-message",
+      "label": "Error Message",
+      "type": "TextField",
+      "mandatory": "true"
+    }
+  ]
+}]
