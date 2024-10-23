@@ -1,4 +1,4 @@
-package id.co.itasoft.fajaralfa.budgetreq;
+package id.co.itasoft.fajaralfa.budgetreq.tool;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -14,7 +14,8 @@ public class Activator implements BundleActivator {
         registrationList = new ArrayList<ServiceRegistration>();
 
         //Register plugin here
-        registrationList.add(context.registerService(OneAtATimeTool.class.getName(), new OneAtATimeTool(), null));
+        registrationList.add(context.registerService(UserLookupTool.class.getName(), new UserLookupTool(), null));
+        registrationList.add(context.registerService(UserLookupClearTool.class.getName(), new UserLookupClearTool(), null));
     }
 
     public void stop(BundleContext context) {

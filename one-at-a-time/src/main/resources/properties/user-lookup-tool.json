@@ -1,0 +1,13 @@
+[
+  {
+    "title": "User Lookup Tool Properties",
+    "properties": [
+      {
+        "name": "flagVariable",
+        "label": "Flag Workflow Variable",
+        "type": "TextField",
+        "required": "true"
+      }
+    ]
+  }
+]
