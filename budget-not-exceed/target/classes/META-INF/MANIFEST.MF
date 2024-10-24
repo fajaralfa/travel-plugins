@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1729502630031
+Bnd-LastModified: 1729758171404
 Build-Jdk-Spec: 11
 Bundle-Activator: id.co.itasoft.fajaralfa.budgetreq.validator.Activator
 Bundle-ManifestVersion: 2

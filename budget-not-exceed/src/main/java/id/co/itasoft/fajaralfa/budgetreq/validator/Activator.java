@@ -14,7 +14,8 @@ public class Activator implements BundleActivator {
         registrationList = new ArrayList<ServiceRegistration>();
 
         //Register plugin here
-        registrationList.add(context.registerService(BudgetNotExceed.class.getName(), new BudgetNotExceed(), null));
+        registrationList.add(context.registerService(BudgetNotExceedGridValidator.class.getName(), new BudgetNotExceedGridValidator(), null));
+        registrationList.add(context.registerService(BudgetNotExceedFieldValidator.class.getName(), new BudgetNotExceedFieldValidator(), null));
     }
 
     public void stop(BundleContext context) {

@@ -5,13 +5,19 @@
       "name": "requester-username",
       "label": "Requester Username",
       "type": "TextField",
-      "mandatory": "true"
+      "required": "True"
     },
     {
-      "name": "error-message",
-      "label": "Error Message",
+      "name": "error-value-exceeded",
+      "label": "Error Message When Value Exceeded",
       "type": "TextField",
-      "mandatory": "true"
+      "required": "True"
+    },
+    {
+      "name": "error-value-not-exist",
+      "label": "Error Message When Value Not Exist",
+      "type": "TextField",
+      "required": "True"
     }
   ]
 }]
