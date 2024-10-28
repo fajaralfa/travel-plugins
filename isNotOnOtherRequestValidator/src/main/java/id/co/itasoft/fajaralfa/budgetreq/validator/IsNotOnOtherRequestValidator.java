@@ -19,7 +19,9 @@ public class IsNotOnOtherRequestValidator extends FormValidator {
         boolean result = true;
 
         String id = FormUtil.getElementParameterName(element);
-        if (isOnOtherRequest(id)) {
+
+        String username = (String) getProperty("username");
+        if (isOnOtherRequest(username)) {
             result = false;
             formData.addFormError(id, (String) getProperty("error-message"));
         }
@@ -27,52 +29,50 @@ public class IsNotOnOtherRequestValidator extends FormValidator {
         return result;
     }
 
-    public boolean isOnOtherRequest(String id) {
+    public boolean isOnOtherRequest(String username) {
         DataSource ds = (DataSource) AppUtil.getApplicationContext().getBean("setupDataSource");
-        int count = 0;
 
+        boolean result = false;
         try (Connection c = ds.getConnection()) {
-            String sql = "SELECT COUNT(*) AS count FROM app_fd_pengajuan_dana WHERE c_on_request IS NOT NULL AND createdBy = ?";
+            String sql = "SELECT createdBy FROM app_fd_pengajuan_dana WHERE createdBy = ? AND c_on_request IS NOT NULL LIMIT 1";
             PreparedStatement statement = c.prepareStatement(sql);
             statement.setString(1, username);
             ResultSet resultSet = statement.executeQuery();
-            if (resultSet.next()) {
-                count = resultSet.getInt("count");
-            }
+            result = resultSet.next();
         } catch (SQLException e) {
             LogUtil.error(getClassName(), e, e.getMessage());
         }
 
-        return count >= 1;
+        return result;
     }
 
     @Override
     public String getName() {
-        return "";
+        return "Itasoft - FajarAlfa - BudgetReq - Is Not On Other Request Validator";
     }
 
     @Override
     public String getVersion() {
-        return "";
+        return "1.0-SNAPSHOT";
     }
 
     @Override
     public String getDescription() {
-        return "";
+        return "Itasoft - FajarAlfa - BudgetReq - Is Not On Other Request Validator";
     }
 
     @Override
     public String getLabel() {
-        return "";
+        return "Itasoft - FajarAlfa - BudgetReq - Is Not On Other Request Validator";
     }
 
     @Override
     public String getClassName() {
-        return "";
+        return getClass().getName();
     }
 
     @Override
     public String getPropertyOptions() {
-        return "";
+        return AppUtil.readPluginResource(getClassName(), "/properties/is-not-on-other-request-validator.json");
     }
 }
