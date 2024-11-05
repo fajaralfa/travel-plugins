@@ -18,15 +18,16 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import mjson.Json;
+import org.joget.workflow.model.service.WorkflowUserManager;
 
 public class BudgetWebService extends DefaultApplicationPlugin implements PluginWebSupport {
     public String getName() {
-        return "Itasoft - FajarAlfa - Budget Checker Web Service";
+        return "Itasoft - FajarAlfa - BudgetReq - Budget Checker Web Service";
     }
 
     @Override
     public String getVersion() {
-        return "1.0-SNAPSHOT";
+        return "1.0.1-SNAPSHOT";
     }
 
     @Override
@@ -43,7 +44,9 @@ public class BudgetWebService extends DefaultApplicationPlugin implements Plugin
     public void webService(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter writer = response.getWriter();
 
-        String username = request.getParameter("username");
+        WorkflowUserManager workflowUserManager = (WorkflowUserManager) AppUtil.getApplicationContext().getBean("workflowUserManager");
+
+        String username = workflowUserManager.getCurrentUsername();
         HashMap<String, Object> responseMap = new HashMap<>();
 
         if (username != null) {
