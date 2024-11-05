@@ -2,12 +2,6 @@
   "title": "User Is Not On Other Request Validator",
   "properties": [
     {
-      "name": "username",
-      "label": "Username",
-      "type": "TextField",
-      "required": "True"
-    },
-    {
       "name": "error-message",
       "label": "Error Message",
       "type": "TextField",

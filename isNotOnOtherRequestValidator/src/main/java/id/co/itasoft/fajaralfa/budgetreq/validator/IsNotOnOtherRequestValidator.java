@@ -6,6 +6,7 @@ import org.joget.apps.form.model.FormData;
 import org.joget.apps.form.model.FormValidator;
 import org.joget.apps.form.service.FormUtil;
 import org.joget.commons.util.LogUtil;
+import org.joget.workflow.model.service.WorkflowUserManager;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -16,11 +17,12 @@ import java.sql.SQLException;
 public class IsNotOnOtherRequestValidator extends FormValidator {
     @Override
     public boolean validate(Element element, FormData formData, String[] strings) {
-        boolean result = true;
-
+        WorkflowUserManager workflowUserManager = (WorkflowUserManager) AppUtil.getApplicationContext().getBean("workflowUserManager");
         String id = FormUtil.getElementParameterName(element);
 
-        String username = (String) getProperty("username");
+        boolean result = true;
+
+        String username = workflowUserManager.getCurrentUsername();
         if (isOnOtherRequest(username)) {
             result = false;
             formData.addFormError(id, (String) getProperty("error-message"));
@@ -53,7 +55,7 @@ public class IsNotOnOtherRequestValidator extends FormValidator {
 
     @Override
     public String getVersion() {
-        return "1.0-SNAPSHOT";
+        return "1.0.1-SNAPSHOT";
     }
 
     @Override
